@@ -1,20 +1,20 @@
-const express = require("express");
+import express, { json, urlencoded, static } from "express";
 const app = express();
-const { chromium } = require("playwright-chromium");
-const mongoose = require("mongoose");
-const multer = require("multer");
+import { chromium } from "playwright-chromium";
+import { connect, connection } from "mongoose";
+import multer from "multer";
 const upload = multer();
 var story = require(__dirname + "/models/story");
 
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.static(__dirname + "/public"));
+app.use(json());
+app.use(urlencoded());
+app.use(static(__dirname + "/public"));
 
-mongoose.connect(
+connect(
   "mongodb+srv://appy:appypass@cluster0.mzeud.mongodb.net/insta-scrapper?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
-const db = mongoose.connection;
+const db = connection;
 db.on("error", console.error.bind(console, "connection error:"));
 
 async function scrape(userName, pswd) {
