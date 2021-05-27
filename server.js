@@ -21,10 +21,14 @@ async function scrape(userName, pswd) {
   const browser = await chromium.launch({ args: ["--no-sandbox"] });
   const context = await browser.newContext();
   const page = await context.newPage();
-  await page.goto("https://www.instagram.com/accounts/login/");
+  await page.goto("https://www.instagram.com/accounts/login/", {
+    timeout: 60000,
+    waitUntil: "domcontentloaded",
+  });
 
   await page.waitForSelector("[type=submit]", {
     state: "visible",
+    timeout: 60000,
   });
   // You can also take screenshots of pages
   await page.screenshot({
@@ -35,14 +39,21 @@ async function scrape(userName, pswd) {
 
   await page.click("[type=submit]");
   try {
-    await page.waitForSelector("[placeholder=Search]", { state: "visible" });
+    await page.waitForSelector("[placeholder=Search]", {
+      state: "visible",
+      timeout: 60000,
+    });
   } catch (e) {
     throw new Error("Invalid User Name or Password");
   }
 
-  await page.goto("https://www.instagram.com/stories/" + userName); // ->
+  await page.goto("https://www.instagram.com/stories/" + userName, {
+    state: "visible",
+    timeout: 60000,
+  }); // ->
   await page.waitForSelector("[type=button]", {
     state: "visible",
+    timeout: 60000,
   });
 
   await page.click("[type=button]");
@@ -50,6 +61,7 @@ async function scrape(userName, pswd) {
   // Execute code in the DOM
   await page.waitForSelector("img", {
     state: "visible",
+    timeout: 60000,
   });
   await page.screenshot({ path: `profile.png` });
   let url = page.url();
