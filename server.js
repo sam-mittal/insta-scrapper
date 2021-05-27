@@ -49,16 +49,16 @@ async function scrape(userName, pswd) {
     throw new Error("Invalid User Name or Password");
   }
 
-  await page.goto("https://www.instagram.com/stories/" + userName, {
+  await page.goto("https://www.instagram.com/", {
     state: "visible",
     timeout: 60000,
   }); // ->
-  await page.waitForSelector("[type=button]", {
+  await page.waitForSelector("div.Fd_fQ", {
     state: "visible",
     timeout: 60000,
   });
 
-  await page.click("[type=button]");
+  await page.click("div.EcJQs", { position: { x: 60, y: 40 } });
 
   // Execute code in the DOM
   await page.waitForSelector("img", {
