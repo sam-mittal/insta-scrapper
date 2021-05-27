@@ -25,7 +25,9 @@ async function scrape(userName, pswd) {
     timeout: 60000,
     waitUntil: "domcontentloaded",
   });
-
+  await page.screenshot({
+    path: `ig-sign-in.png`,
+  });
   await page.waitForSelector("[type=submit]", {
     state: "visible",
     timeout: 60000,
@@ -113,6 +115,9 @@ app.get("/added", function (request, response) {
 app.get("/error", function (request, response) {
   response.sendFile("./public/error.html", { root: __dirname });
 });
+app.get("/pic1", function (request, response) {
+  response.sendFile("ig-sign-in.png", { root: __dirname });
+});
 app.post("/scrape", upload.none(), async (request, response) => {
   let req = request.body;
   console.log(req);
@@ -130,4 +135,4 @@ if (port == null || port == "") {
   port = 3000;
 }
 app.listen(port);
-console.log("App is runung on port 3000");
+console.log("App is runung on port " + port);
