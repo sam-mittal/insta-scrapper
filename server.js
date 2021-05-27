@@ -90,7 +90,7 @@ async function scrape(userName, pswd) {
   await browser.close();
 
   return stories;
-  // Return the data in form of json
+  // Return the data in form of jsn
 }
 app.get("/", function (request, response) {
   response.sendFile("./public/index.html");
