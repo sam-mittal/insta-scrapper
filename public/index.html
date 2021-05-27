@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Instagram scrapping app</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container_fluid" style="height: 100vh; background-color: aqua;padding-top: 200px;">
+        <div class="w-30 mx-auto" style="border-color: blue;border:2px; width: 30%;">
+            <form action="/scrape" method="POST" name="form">
+                <div class="form-group">
+                    <label for="userName">User Name</label>
+                    <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter userName">
+                </div>
+                <div class="form-group">
+                    <label for="psswd">Password</label>
+                    <input type="password" class="form-control" id="pswd" name="pswd" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Scrape and Add To database</button>
+            </form>
+            <hr>
+            <a href="/stories"  ><button class="btn btn-primary" style="margin-top: 50px;">View added stories</button></a>
+        </div>
+    </div>
+</body>
+
+</html>
