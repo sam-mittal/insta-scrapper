@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const playwright = require("playwright");
+const { chromium } = require("playwright-chromium");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const upload = multer();
@@ -18,9 +18,7 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 
 async function scrape(userName, pswd) {
-  const browser = await playwright.chromium.launch({
-    headless: true, // set this to true
-  });
+  const browser = await chromium.launch({ args: ["--no-sandbox"] });
   const context = await browser.newContext();
   const page = await context.newPage();
   await page.goto("https://www.instagram.com/accounts/login/");
