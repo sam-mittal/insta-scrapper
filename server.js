@@ -18,7 +18,9 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 
 async function scrape(userName, pswd) {
-  const browser = await chromium.launch({ args: ["--no-sandbox"] });
+  const browser = await chromium.launch({
+    args: ["--no-sandbox --proxy-server=http://122.155.165.191:3128"],
+  });
   const context = await browser.newContext();
   const page = await context.newPage();
   await page.goto("https://www.instagram.com/accounts/login/", {
@@ -61,7 +63,7 @@ async function scrape(userName, pswd) {
   await page.click("div.EcJQs", { position: { x: 60, y: 40 } });
 
   // Execute code in the DOM
-  await page.waitForSelector("img", {
+  await page.waitForSelector("div.qbCDp img", {
     state: "visible",
     timeout: 60000,
   });
