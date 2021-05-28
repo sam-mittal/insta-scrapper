@@ -6,6 +6,22 @@
     <title>Instagram scrapping app</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+            function loading(){
+                const element = document.getElementById("loading");
+                element.classList.remove("disp");
+                const ds = document.getElementById("d");
+                ds.classList.remove("disp");
+                const es = document.getElementById("e");
+                es.classList.add("disp");
+            }
+        </script>
+    <style>
+        .disp{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,10 +36,10 @@
                     <label for="psswd">Password</label>
                     <input type="password" class="form-control" id="pswd" name="pswd" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-primary">Scrape and Add To database</button>
+                <button type="submit" class="btn btn-primary" onclick="loading()"><i id="loading" class="fa fa-refresh fa-spin disp"></i><span id="d" class="disp"> Scraping...</span><span id ="e" clas=""> Scrape and Add To database</span></button>
             </form>
             <hr>
-            <a href="/stories"  ><button class="btn btn-primary" style="margin-top: 50px;">View added stories</button></a>
+            <a href="/stories"  ><button class="btn btn-primary" style="margin-top: 50px;" >View added stories</button></a>
         </div>
     </div>
 </body>
