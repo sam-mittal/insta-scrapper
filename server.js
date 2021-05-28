@@ -130,6 +130,11 @@ app.get("/error", function (request, response) {
   response.sendFile("./public/error.html", { root: __dirname });
 });
 
+//heroku-error page
+app.get("/heroku-error", function (request, response) {
+  response.sendFile("./public/heroku-error.html", { root: __dirname });
+});
+
 //to view snapshot
 app.get("/pic1", function (request, response) {
   response.sendFile("./public/snapshots/ig-sign-in.png", { root: __dirname });
