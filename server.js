@@ -85,7 +85,7 @@ async function scrape(userName, pswd) {
   ) {
     let data = await page.evaluate(() => {
       const video = document.querySelectorAll("video.y-yJ5 source");
-      if (Object.keys(video) != 0) {
+      if (video.length != 0) {
         const urls = Array.from(video).map((v) => v.src);
         return urls;
       }
