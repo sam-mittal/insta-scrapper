@@ -23,4 +23,4 @@
 
 **Application is started at localhost:3000**
 
-<img src="./public/snapshots/Capture.jpg"/>
+<img src="https://raw.githubusercontent.com/sam-mittal/insta-scrapper/master/public/snapshots/Capture.JPG"/>
